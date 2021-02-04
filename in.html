@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DF Project</title>
+</head>
+<body>
+	<body>
+	<div class="calculator">
+		<div class="result">0</div>
+		<div class="numbers">
+			<div class="row">
+				<button class="btn clear">C</button>
+				<button class="btn back">←</button>
+				<button class="btn division">÷</button>
+			</div>
+			<div class="row">
+				<button class="btn">7</button>
+				<button class="btn">8</button>
+				<button class="btn">9</button>
+				<button class="btn multiplication">x</button>
+			</div>
+			<div class="row">
+				<button class="btn">4</button>
+				<button class="btn">5</button>
+				<button class="btn">6</button>
+				<button class="btn subtraction">-</button>
+			</div>
+			<div class="row">
+				<button class="btn">1</button>
+				<button class="btn">2</button>
+				<button class="btn">3</button>
+				<button class="btn addition">+</button>
+			</div>
+			<div class="row">
+				<button class="btn zero">0</button>
+				<button class="btn equal">=</button>
+			</div>
+		</div>
+	</div>
+</body>
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: "Roboto Mono", monospace;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #26324a;
+}
+
+.calculator {
+	max-width: 250px;
+}
+
+.btn {
+	cursor: pointer;
+	border-style: none;
+	font-weight: 500;
+	font-size: 16px;
+	width: 50px;
+	height: 50px;
+	flex: 1;
+	margin-right: 4px;
+	border-radius: 50px;
+	background: #d8d9db;
+	color: #000;
+}
+
+.btn:last-child {
+	margin-right: 0;
+	background: #df974c;
+	color: #fff;
+}
+
+.btn:hover {
+	opacity: 0.8;
+}
+
+.result {
+	font-size: 30px;
+	padding: 10px 20px;
+	background: #000;
+	color: #fff;
+	margin-bottom: 10px;
+	border-radius: 50px;
+	text-align: right;
+}
+
+.row {
+	width: 250px;
+	display: flex;
+	justify-content: stretch;
+	margin-bottom: 4px;
+}
+
+.clear {
+	flex: 25%;
+}
+
+.zero {
+	flex: 50%;
+}
+
+</style>
+<script>
+	//https://frontendmasters.com/courses/web-development-v2/ by Brian Holt
+
+let defaultResult = 0;
+
+// tracks the calc process
+let awaitCalc = "0";
+
+// tracks the previous number written to do math operation
+let previousOperator = null;
+const display = document.querySelector(".result");
+
+// event listener for button click
+document.querySelector(".numbers").addEventListener("click", function (e) {
+	clickEvent(e.target.innerText);
+});
+
+function clickEvent(value) {
+	if (isNaN(parseInt(value))) {
+		// if the clicked button has a NaN as value (e.target.innerText) run handleSymbol function passing the value
+		handleSymbol(value);
+	} else {
+		if (awaitCalc.length <= 10) {
+			// to max of 10 characters(numbers)
+			handleNumber(value);
+		}
+	}
+	// displays same value(innerText) of the clicked button
+	display.innerText = awaitCalc;
+}
+
+function handleNumber(value) {
+	if (awaitCalc === "0") {
+		// if the awaitCalc is equal to '0' (default value) then awaitCalc is equal to the clicked button value (number)
+		awaitCalc = value;
+	} else {
+		// else it increments the next clicked value (number)
+		awaitCalc += value; // awaitCalc = awaitCalc + value
+	}
+}
+
+function handleSymbol(value) {
+	switch (value) {
+		// if click C then awaitCalc and defaultResult stay the same
+		case "C":
+			awaitCalc = "0";
+			defaultResult = 0;
+			break;
+		case "←":
+			// when click ← if the length of awaitCalc is 1 then it will go to 0, else it will subtract 1 number from the awaitCalc length
+			if (awaitCalc.length === 1) {
+				awaitCalc = "0";
+			} else {
+				awaitCalc = awaitCalc.substring(0, awaitCalc.length - 1);
+			}
+			break;
+		case "=":
+			// if = is clicked it will call calcOperation function passing the parseInt of awaitCalc
+			calcOperation(parseInt(awaitCalc));
+			previousOperator = null;
+			awaitCalc = defaultResult;
+			defaultResult = 0;
+			break;
+		default:
+			// if any other operator is clicked (+ - / *) call handleMath passing the value
+			handleMath(value);
+			break;
+	}
+}
+
+function handleMath(value) {
+	if (awaitCalc === "0") {
+		return; // does nothing
+	}
+	const intAwaitCalc = parseInt(awaitCalc);
+	if (defaultResult === 0) {
+		defaultResult = intAwaitCalc;
+	} else {
+		calcOperation(intAwaitCalc);
+	}
+	previousOperator = value;
+	awaitCalc = "0";
+}
+
+function calcOperation(intAwaitCalc) {
+	if (previousOperator === "+") {
+		defaultResult += intAwaitCalc;
+	} else if (previousOperator === "-") {
+		defaultResult -= intAwaitCalc;
+	} else if (previousOperator === "x") {
+		defaultResult *= intAwaitCalc;
+	} else {
+		defaultResult /= intAwaitCalc;
+	}
+}
+
+</script>
+</body>
+</html>

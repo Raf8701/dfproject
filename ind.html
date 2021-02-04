@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DF Project</title>
+  <div class="header-holder">
+    <p style="margin-top: 50px;font-size: 50px; color: white;">DF Project</p>
+  <header class="header">
+    <div class="search-mobile" style="display: block;">
+      <a rel="nofollow">
+        <i class="icon_search"></i>
+      </a>
+    </div>
+    
+    <nav class="header-nav">
+      <div class="header-nav__inner">
+        <ul class="header-menu-list">
+          <li class="header-menu-item">
+            <a href="parapel1.html">HOME</a>
+          </li>
+          <li class="header-menu-item">
+            <a rel="" href="paparpel2.html">SHOP</a>
+          </li>
+          <li class="header-menu-item">
+            <a rel="" href="parapel3.html">CONTACTS</a>
+          </li>
+        </ul>
+        </div>
+    </nav>
+    
+    <a href="/" class="logo"></a>
+    
+    <a href="#" class="device-menu">
+      <div class="device-menu__inner">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </a>
+  </header>
+</div>
+<div align="center" style="padding-top: 20px;">
+</div>
+  <style>
+    body {
+  margin: 0;
+}
+
+.header-holder {
+  width: 100%;
+  background-color: #16181C;
+  z-index: 4;
+  overflow: hidden;
+}
+
+header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 40px;
+  z-index: 5;
+  -webkit-transition: background-color 0.4s ease-out;
+  transition: background-color 0.4s ease-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  width: 114px;
+  height: 25px;
+  display: block;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  order: 1;
+}
+
+.search-mobile {
+  /*     display: none; */
+  position: absolute;
+  top: -5px;
+  right: 50px;
+  z-index: 6;
+} 
+
+.search-mobile a {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  position: relative;
+}
+
+
+.search-mobile a .icon_search {
+  background: url("https://yalantis.com/assets/icon-search-eb2d80fde29a4eb86770580f52872b64097df105b39901d39abcea6dbc372969.svg") no-repeat 0 0;
+  width: 25px;
+  height: 25px;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: -webkit-transform .4s ease;
+  transition: -webkit-transform .4s ease;
+  transition: transform .4s ease;
+  transition: transform .4s ease, -webkit-transform .4s ease;
+}
+
+
+
+.header-nav {
+  order: 2;
+}
+
+.header-nav {
+  display: none; 
+}
+
+.header-nav.active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.97);
+  z-index: 10;
+  opacity: 1;
+  -webkit-transition: opacity 0.6s linear;
+  transition: opacity 0.6s linear;
+}
+
+.header-nav.active .header-nav__inner {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  overflow: auto;
+}
+
+nav.active ul {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+}
+
+nav.active ul li {
+  padding: 10px 0;
+}
+
+nav ul {
+  padding: 8px 0 0 0;
+  display: flex;
+}
+
+nav ul li {
+  padding: 0 0 0 13px;
+  list-style: none;
+}
+
+nav ul li a {
+  display: inline-block;
+  font-family: "BrandonText", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  letter-spacing: 0.9px;
+  position: relative;
+  text-decoration: none;
+  transition: color .5s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: orange;
+  transition: color .3s ease-in-out;
+}
+
+.device-menu {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 55px;
+  height: 50px;
+  z-index: 11;
+  background-color: rgba(0,0,0,0.6);
+  width: 45px;
+  height: 40px;
+  display: block;
+}
+
+
+.device-menu .device-menu__inner {
+  width: 24px;
+  height: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.device-menu span {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  background-color: white;
+  top: 5px;
+  left: 0;
+  /*     -webkit-transform: rotate(45deg);
+  transform: rotate(45deg); */
+}
+
+.device-menu span:nth-child(1) {
+  top: 0;
+  -webkit-transition: rotate, 0.3s;
+  transition: rotate, 0.3s;
+}
+
+.device-menu span:nth-child(2) {
+  top: 50%;
+  /*     -webkit-transform: translate(0, -50%); */
+  /*     transform: translate(0, -50%); */
+}
+
+/* .device-menu.open span:nth-child(2) {
+opacity: 0;
+} */
+
+.device-menu span:nth-child(3) {
+  top: 100%;
+  -webkit-transition: rotate, 0.3s;
+  transition: rotate, 0.3s;
+}
+
+.device-menu.open span:nth-child(1) {
+  top: 10px;
+  right: 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.device-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.device-menu.open span:nth-child(3) {
+  top: 10px;
+  right: 0;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/* @media only screen and (max-width: 1024px) { */
+/*   @media only screen and (max-width: 2000px) {
+.head {
+display: none; 
+}
+
+.head.active {
+display: block;
+}
+
+.device-menu {
+display: block;
+}
+} */
+
+
+  </style>
+
+
+  <script>
+    const openMobileMenuBtn = document.querySelector(".device-menu");
+const headerMenu = document.querySelector(".header-nav");
+
+openMobileMenuBtn.addEventListener("click", () => {
+  if(openMobileMenuBtn.classList.contains("open")) {
+    openMobileMenuBtn.classList.remove("open");
+    headerMenu.classList.remove("active");
+  } else {
+    headerMenu.classList.add("active");
+    openMobileMenuBtn.classList.add("open");
+  }
+})
+  </script>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  
+
+<ul class="list">
+    <li class="list__item"><a href="https://www.facebook.com/DFprojectjewelry" class="list__item-link" ><i class="fab fa-facebook-f"></i></a></li>
+    <li class="list__item"><a href="https://www.instagram.com/dfproject_jewellery/" class="list__item-link" ><i class="fab fa-instagram"></i></a></li>
+  </ul>
+
+  <style>
+    body{
+  background-color: #262626;
+}
+.list{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  transition: .5s ease-in-out;
+}
+.list__item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transform: rotate(45deg);
+}
+.list__item::before{
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transition: 0.5s ease-in-out;
+  z-index: -3;
+}
+.list__item::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  transition: 0.5s ease-in-out;
+  z-index: -3;
+  opacity: 0.8;
+}
+.list__item:hover::after{
+  top: 0;
+}
+.fab{
+  font-size: 40px;
+  color: white;
+  transform: rotate(-45deg);
+}
+.list__item:nth-child(1)::before,
+.list__item:nth-child(1)::after{
+  background: #1f257d;
+}
+.list__item:nth-child(2)::before,
+.list__item:nth-child(2)::after{
+  background: #d44d24;
+}
+.list__item:nth-child(3)::before,
+.list__item:nth-child(3)::after{
+  background: #55acee;
+}
+.list__item:nth-child(4)::before,
+.list__item:nth-child(4)::after{
+  background: #34465d;
+}
+.list__item:nth-child(5)::before,
+.list__item:nth-child(5)::after{
+  background: #cd201f;
+}
+  </style>
+</body>
+</html>
